@@ -1,8 +1,10 @@
 # Python
 __pycache__/
-backend/__pycache__/
+**/__pycache__/
+*.pyc
 backend/.pytest_cache/
 backend/venv/
+
 
 # Archivos zip
 *.tar
