@@ -1,4 +1,3 @@
-# app/routers/batch.py
 from fastapi import APIRouter
 from functools import reduce
 from typing import List

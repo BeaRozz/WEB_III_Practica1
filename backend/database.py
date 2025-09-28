@@ -1,4 +1,3 @@
-# app/database.py
 from pymongo import MongoClient
 
 # Conexión centralizada

@@ -1,4 +1,3 @@
-# app/routers/calculator.py
 import datetime
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
@@ -36,7 +35,7 @@ def resta(datos: NumerosInput):
     resultado = reduce(lambda x, y: x - y, datos.nums)
 
     document = {
-        "operacion": "sub", "nums": datos.nums, "resultado": resultado,
+        "operacion": "res", "nums": datos.nums, "resultado": resultado,
         "date": datetime.datetime.now(tz=datetime.timezone.utc),
     }
     collection_historial.insert_one(document)
