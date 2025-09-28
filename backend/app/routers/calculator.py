@@ -1,6 +1,7 @@
 # app/routers/calculator.py
 import datetime
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 from functools import reduce
 
 from models import NumerosInput
@@ -12,9 +13,9 @@ router = APIRouter()
 # ----- OPERACIONES BÁSICAS -----
 @router.post("/sum")
 def suma(datos: NumerosInput):
-    error_response = ejecutar_validaciones(operacion="sum", nums=datos.nums)
-    if error_response:
-        return error_response
+    error_dict = ejecutar_validaciones(operacion="sum", nums=datos.nums)
+    if error_dict:
+        return JSONResponse(status_code=400, content=error_dict)
 
     resultado = sum(datos.nums)
 
@@ -25,12 +26,12 @@ def suma(datos: NumerosInput):
     collection_historial.insert_one(document)
     return {"nums": datos.nums, "resultado": resultado}
 
+
 @router.post("/res")
 def resta(datos: NumerosInput):
-    # Idéntica llamada a la validación
-    error_response = ejecutar_validaciones(operacion="sub", nums=datos.nums)
-    if error_response:
-        return error_response
+    error_dict = ejecutar_validaciones(operacion="res", nums=datos.nums)
+    if error_dict:
+        return JSONResponse(status_code=400, content=error_dict)
 
     resultado = reduce(lambda x, y: x - y, datos.nums)
 
@@ -41,11 +42,12 @@ def resta(datos: NumerosInput):
     collection_historial.insert_one(document)
     return {"nums": datos.nums, "resultado": resultado}
 
+
 @router.post("/mul")
 def multiplicacion(datos: NumerosInput):
-    error_response = ejecutar_validaciones(operacion="mul", nums=datos.nums)
-    if error_response:
-        return error_response
+    error_dict = ejecutar_validaciones(operacion="mul", nums=datos.nums)
+    if error_dict:
+        return JSONResponse(status_code=400, content=error_dict)
     
     resultado = reduce(lambda x, y: x * y, datos.nums)
 
@@ -59,9 +61,9 @@ def multiplicacion(datos: NumerosInput):
 
 @router.post("/div")
 def division(datos: NumerosInput):
-    error_response = ejecutar_validaciones(operacion="div", nums=datos.nums)
-    if error_response:
-        return error_response
+    error_dict = ejecutar_validaciones(operacion="div", nums=datos.nums)
+    if error_dict:
+        return JSONResponse(status_code=400, content=error_dict)
 
     resultado = reduce(lambda x, y: x / y, datos.nums)
 

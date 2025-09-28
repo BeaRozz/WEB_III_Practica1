@@ -1,11 +1,11 @@
-# app/validation.py
+import math
 from typing import Optional, List, Callable
 from fastapi.responses import JSONResponse
 
 # --- Reglas de validación individuales ---
 
 def validar_no_negativos(nums: list[float]) -> Optional[str]:
-    if any(n < 0 for n in nums):
+    if any(math.copysign(1.0, n) == -1.0 for n in nums):
         return "No se permiten números negativos"
     return None
 
@@ -28,7 +28,8 @@ def obtener_reglas_aritmeticas_estandar() -> list:
 
 # --- Función Orquestadora "Inteligente" (sin cambios) ---
 
-def ejecutar_validaciones(operacion: str, nums: List[float]) -> Optional[JSONResponse]:
+def ejecutar_validaciones(operacion: str, nums: List[float]) -> Optional[dict]:
+
     reglas_a_aplicar = obtener_reglas_aritmeticas_estandar()
     
     if operacion == "div":
@@ -45,6 +46,6 @@ def ejecutar_validaciones(operacion: str, nums: List[float]) -> Optional[JSONRes
             "operacion": operacion, "nums": nums,
             "status_code": 400, "error": lista_de_errores
         }
-        return JSONResponse(status_code=400, content=error_body)
+        return error_body
         
     return None

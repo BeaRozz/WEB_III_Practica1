@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # Importamos los routers desde la carpeta app/routers
-from app.routers import calculator, history
+from app.routers import calculator, history, batch
 
 app = FastAPI()
 
@@ -19,6 +19,7 @@ app.add_middleware(
 
 app.include_router(calculator.router, prefix="/calculadora", tags=["Calculadora"])
 app.include_router(history.router, tags=["Historial"])
+app.include_router(batch.router, tags=["Procesamiento por Lote"])
 
 @app.get("/")
 def read_root():
