@@ -1,0 +1,229 @@
+/* --- Importar Fuentes de Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&family=Montserrat:wght@400;700&display=swap');
+
+/* --- Variables de Color y Estilos Base --- */
+:root {
+  --background-color: #c58c9f;
+  --panel-background: #fff0f3;
+  --primary-color: #ff85a1;
+  --text-color: #333;
+  --border-color: #ffc2d1;
+  --font-title: 'Fascinate', cursive;
+  --font-body: 'Montserrat', sans-serif;
+  --input-active-bg: #c587a3;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: var(--font-body);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* --- Contenedor Principal y Header --- */
+.App {
+  width: 100%;
+  max-width: 1200px;
+}
+
+header h1 {
+  font-family: var(--font-title);
+  color: white;
+  text-shadow: 2px 2px 4px var(--primary-color);
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 30px;
+}
+
+.panel {
+  background-color: var(--panel-background);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-top: 0;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+/* --- Estilos para la Calculadora --- */
+.calculator {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+}
+
+.numbers-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 12px;
+  min-height: 50px;
+}
+
+.number-box {
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  word-wrap: break-word;
+  transition: background-color 0.3s, color 0.3s;
+  
+  flex: 1 1 80px; /* flex-grow, flex-shrink, flex-basis */
+}
+
+/* Estilo para la cajita cuando tiene un número */
+.number-box.has-value {
+  background-color: var(--input-active-bg);
+  color: white;
+  border-color: var(--input-active-bg);
+}
+.number-box.has-value::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.operator-symbol {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Contenedor para alinear el botón y el resultado */
+.result-container {
+    display: flex;
+    align-items: flex-start; /* Alinear al inicio para el texto multilínea */
+    gap: 15px;
+}
+
+.result-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0; /* Evita que el botón se encoja */
+}
+
+.result-button:hover {
+  background-color: #ff6b8d;
+}
+
+.result-display {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  padding-top: 5px; 
+  word-break: break-all; 
+}
+
+/* --- Estilos para el Historial --- */
+.history .filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.filters select, .filters .date-picker {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  border-top: 2px solid var(--border-color);
+  padding-top: 15px;
+}
+
+.history-list li {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 5px solid var(--primary-color);
+  color: var(--input-active-bg);
+  font-weight: bold;
+}
+
+/* Estilos para el formato del historial */
+.history-item-line {
+    display: block;
+    margin-bottom: 8px;
+}
+.history-item-line:last-child {
+    margin-bottom: 0;
+}
+.history-item-line span {
+    font-weight: normal;
+}
+.history-op-result {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.history-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+    font-weight: normal;
+    text-align: right;
+}
+
+.history-list .no-history {
+  text-align: center;
+  padding: 20px;
+  color: #999;
+  border: none;
+  background: none;
+}
+
+/* --- Estilos para SweetAlert2 --- */
+.swal2-confirm {
+  background-color: var(--primary-color) !important;
+}
