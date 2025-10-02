@@ -8,7 +8,7 @@ app = FastAPI()
 # Configurar CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permitir todas las orígenes
+    allow_origins=["*"],  # Permitir todas las orÃ­genes
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,7 +22,7 @@ collection_historial = database.historial
 @app.get("/calculadora/sum")
 def sumar(a: float, b: float):
     """
-    Suma de dos números que viene como parámetros e query (?a=...&b=...)
+    Suma de dos nÃºmeros que viene como parÃ¡metros e query (?a=...&b=...)
     Ejemplo: /calculadora/sum?a=5&b=10
     """
 
