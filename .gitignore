@@ -10,11 +10,11 @@ backend/venv/
 *.tar
 
 # Frontend / React
-frontend/node_modules/
-frontend/.pnp/
-frontend/.pnp.js
-frontend/coverage/
-frontend/build/
+**/node_modules/
+**/.pnp/
+**/.pnp.js
+**/coverage/
+**/build/
 
 # Misceláneos
 .DS_Store
