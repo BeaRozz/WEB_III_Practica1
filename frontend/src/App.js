@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>Calculadora Holi</h1>
+      <h1>Calculadora Tiene Cambios</h1>
 
       <input
         type="number"
