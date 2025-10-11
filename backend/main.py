@@ -24,6 +24,7 @@ def sumar(a: float, b: float):
     """
     Suma de dos nÃºmeros que viene como parÃ¡metros e query (?a=...&b=...)
     Ejemplo: /calculadora/sum?a=5&b=10
+    Holi, cambios de back
     """
 
     result = a + b
