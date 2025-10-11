@@ -1,12 +1,15 @@
-name: Build and Push Frontend Image
+name: Build and Push Docker Image Front
 
+#cuando
 on:
   push:
     branches: [main]
     tags:
       - 'v*.*.*'
+
     paths:
       - 'frontend/**'
+
     paths-ignore:
       - 'backend/**'
 
