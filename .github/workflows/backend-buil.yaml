@@ -9,10 +9,6 @@ on:
 
     paths:
       - 'backend/**'
-
-    paths-ignore:
-      - 'frontend/**'
-
 #qué
 jobs:
   #qué entrno o con qué
