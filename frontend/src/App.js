@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>Calculadora Tiene Cambios, Sí</h1>
+      <h1>Calculadora Tiene Cambios, Cambios Nuevos en el Frontend</h1>
 
       <input
         type="number"
