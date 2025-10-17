@@ -20,6 +20,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install Python
+        run: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
+
+      - name: Run Pytest
+        working-directory: ./backend
+        run: |
+          pytest test_main.py
+
+
       # ✅ Verifica si hubo cambios en backend/
       - name: Check if backend changed
         id: backend-check
