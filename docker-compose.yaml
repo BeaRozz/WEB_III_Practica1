@@ -11,13 +11,17 @@ services:
       - mongo-network
 
   calculadora:
-    image: calculadora-fast-api
+    build: ./backend         # 👈 Usa la carpeta donde está tu Dockerfile
+    container_name: calculadora
     volumes:
       - ./backend:/app
     ports:
       - "8089:8000"
+    depends_on:
+      - mongo
     networks:
       - mongo-network
+
 
   frontend:
     build: ./frontend
